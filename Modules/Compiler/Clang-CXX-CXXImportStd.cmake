@@ -10,7 +10,9 @@ function (_cmake_cxx_import_std std variable)
     COMMAND
       "${CMAKE_CXX_COMPILER}"
       ${CMAKE_CXX_COMPILER_ID_ARG1}
-      -print-file-name=libc++.modules.json
+      -print-library-module-manifest-path
+      -stdlib=${CMAKE_CXX_STANDARD_LIBRARY}
+      -resource-dir=${CMAKE_CXX_COMPILER_CLANG_RESOURCE_DIR}/../../
     OUTPUT_VARIABLE _clang_libcxx_modules_json_file
     ERROR_VARIABLE _clang_libcxx_modules_json_file_err
     RESULT_VARIABLE _clang_libcxx_modules_json_file_res
